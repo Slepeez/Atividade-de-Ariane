@@ -8,11 +8,11 @@ public class CriarArquivos {
         try {
             //Criação do arquivo em si dentro desse try.
             Files.createFile(caminho);
-            System.out.print("Arquivo .txt criado.");
+            System.out.println("Arquivo .txt criado.");
         }
         catch(IOException e){
             //Captura do erro de entrada/saida de dados e mostra na tela o erro
-            System.err.println("O erro: " + e.getMessage());
+            System.err.println("O erro: " + e);
         }
 
     }

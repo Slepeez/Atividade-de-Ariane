@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 public class EscreverDados {  
@@ -13,21 +14,21 @@ public class EscreverDados {
             //Pedido ao usuário pra digitar o texto.
             System.out.print("Digite o que você quer no texto: ");
             String digitado = br.readLine();
-            //Verifica se tem nada no arquivo, se tiver cria uma nova linha e digita nela, se não digita na linha 1 mesmo.
-            if(ar.getArquivo().toString().length() > 0 ){
+            br = new BufferedReader(Files.newBufferedReader(ar.getArquivo()));
+            String primeiraLinha = br.readLine();
+            if(primeiraLinha != null && !primeiraLinha.strip().isEmpty()){
                 bw.newLine();
                 bw.write(digitado);
                 System.out.println("Tudo certo, pode conferir o seu arquivo agora.");
             }
             else{
                 bw.write(digitado);
-                System.out.print("Tudo certo, pode conferir o seu texto."); 
+                System.out.println("Tudo certo, pode conferir o seu texto."); 
             }
         }catch(IOException e){
             //Tratamento do erro aqui
            System.err.println("Erro de leitura do arquivo" + e); 
-        }
-        
+        }  
     }
     
 }
